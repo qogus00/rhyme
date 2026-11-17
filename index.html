@@ -2,15 +2,7 @@
 <html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2ED16B">
-<link rel="icon" type="image/png" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Rhyme">
-
-<title>Rhyme v0.15.0</title>
+<title>Rhyme v0.16.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -535,13 +527,21 @@ table.t.cardtbl td:nth-child(2),table.t.cardtbl th:nth-child(2),table.t.cardtbl 
 .ghform label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--ink-2)}
 .ghform input{border:1px solid var(--rule-strong);background:var(--surface);border-radius:10px;padding:9px 11px;font-size:15px;color:var(--ink)}
 .fsbox a.btn{text-decoration:none;color:inherit}
+.ptrow .mm b{color:var(--ink-2)}
+.ptam{color:var(--ink-3)!important;font-weight:600}
+.tag.pt{background:color-mix(in srgb,var(--inc) 10%,var(--surface));border-color:color-mix(in srgb,var(--inc) 35%,var(--rule));color:var(--inc)}
+.chip-pt[aria-pressed="true"]{background:var(--inc);border-color:var(--inc);color:#fff}
+.ptnote{margin:6px 0 0;padding:8px 10px;border-radius:8px;background:color-mix(in srgb,var(--inc) 8%,var(--surface));border:1px dashed color-mix(in srgb,var(--inc) 40%,var(--rule))}
+.dcol tr.ptrow td{color:var(--ink-3)}
+.dcol tr.ptrow td.num::after{content:'P'}
+.ptline{font-size:12px;color:var(--ink-2);margin-top:6px}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
     <div class="brandbox">
-      <div class="brand">Rhyme<span class="ver" title="버전 (major.minor.patch)">v0.15.0</span></div>
+      <div class="brand">Rhyme<span class="ver" title="버전 (major.minor.patch)">v0.16.0</span></div>
       <div class="themesw" role="group" aria-label="화면 테마"><button data-act="theme" data-v="auto" aria-pressed="true">자동</button><button data-act="theme" data-v="light" aria-pressed="false">밝게</button><button data-act="theme" data-v="dark" aria-pressed="false">어둡게</button></div>
     </div>
     <nav class="tabs" aria-label="화면"><button data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg><span>홈</span></button><button data-nav="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="8" height="10" rx="1"></rect><rect x="13" y="3" width="8" height="6" rx="1"></rect><rect x="13" y="11" width="8" height="10" rx="1"></rect><rect x="3" y="15" width="8" height="6" rx="1"></rect></svg><span>대시보드</span></button><button data-nav="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg><span>내역</span></button><button data-nav="report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span>결산</span></button><button data-nav="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg><span>설정</span></button></nav>
@@ -572,7 +572,7 @@ table.t.cardtbl td:nth-child(2),table.t.cardtbl th:nth-child(2),table.t.cardtbl 
 /* 저장용 원본: 화면이 그려지기 전의 문서를 그대로 보관 */
 const PRISTINE = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
 /* 버전 표기: major.minor.patch (큰 구조 변경 . 기능 추가 . 작은 수정) */
-const APP_VERSION = '0.15.0';
+const APP_VERSION = '0.16.0';
 /* ============ 분류 정의 ============ */
 const CATS = {
   e: [
@@ -619,18 +619,21 @@ function applyCats(){
     CATS[t].forEach(c => CAT[c.k] = {...c, t});
   }
 }
-const PAY = {card:'카드',cash:'현금',bank:'계좌'};
+const PAY = {card:'카드',cash:'현금',bank:'계좌',point:'포인트'};
+/* 포인트로 결제한 내역은 기록만 하고 어떤 합계·예산·그래프에도 넣지 않음 */
+const isPoint = x => x && x.p === 'point';
+const counted = x => !isPoint(x);
 /* ---- 내 카드 ---- */
 const cardsList = () => (S.settings && S.settings.cards) || [];
 const cardById = id => cardsList().find(c=>c.id===id);
 const cardName = id => { const c = cardById(id); return c ? c.name : (id ? '삭제된 카드' : ''); };
 const payLabel = x => x.p==='card' && x.card ? `💳 ${cardName(x.card)}` : (PAY[x.p]||'');
-const payKey = x => x.p==='card' ? (x.card ? 'card:'+x.card : 'card') : (x.p||'card');
-const payKeyName = k => k==='card' ? (cardsList().length ? '카드 (미지정)' : '카드') : k==='cash' ? '현금' : k==='bank' ? '계좌' : '💳 '+cardName(k.slice(5));
-function paySums(list){ const m = {}; list.forEach(x=>{ if (x.t!=='e') return; const k = payKey(x); const o = m[k] = m[k]||{v:0,n:0}; o.v += x.a; o.n++; }); return m; }
+const payKey = x => x.p==='point' ? 'point' : x.p==='card' ? (x.card ? 'card:'+x.card : 'card') : (x.p||'card');
+const payKeyName = k => k==='point' ? '포인트' : k==='card' ? (cardsList().length ? '카드 (미지정)' : '카드') : k==='cash' ? '현금' : k==='bank' ? '계좌' : '💳 '+cardName(k.slice(5));
+function paySums(list){ const m = {}; list.forEach(x=>{ if (x.t!=='e' || isPoint(x)) return; const k = payKey(x); const o = m[k] = m[k]||{v:0,n:0}; o.v += x.a; o.n++; }); return m; }
 function payOptions(x){
   const cur = x.p==='card' && x.card ? 'card:'+x.card : x.p;
-  const opts = [['card', cardsList().length?'카드 (미지정)':'카드'], ...cardsList().map(c=>['card:'+c.id, '💳 '+c.name]), ['cash','현금'], ['bank','계좌']];
+  const opts = [['card', cardsList().length?'카드 (미지정)':'카드'], ...cardsList().map(c=>['card:'+c.id, '💳 '+c.name]), ['cash','현금'], ['bank','계좌'], ...(x.t==='e' ? [['point','🅿 포인트 (계산 제외)']] : [])];
   if (x.card && !cardById(x.card)) opts.splice(1,0,['card:'+x.card,'삭제된 카드']);
   return opts.map(([v,n])=>`<option value="${v}" ${v===cur?'selected':''}>${esc(n)}</option>`).join('');
 }
@@ -1083,8 +1086,9 @@ function rangeItems(from, to){ // iso inclusive
   return out;
 }
 function summarize(list){
-  const s = {inc:0, live:0, fixed:0, saving:0, transfer:0, byCat:{}};
+  const s = {inc:0, live:0, fixed:0, saving:0, transfer:0, byCat:{}, point:0, pointN:0};
   for (const x of list){
+    if (isPoint(x)){ s.point += x.a; s.pointN++; continue; }
     if (x.t==='i'){ s.inc += x.a; }
     else if (x.t==='x'){ s.transfer += x.a; }
     else { const g = (CAT[x.c]||{}).g || 'live'; if (g==='saving') s.saving += x.a; else if (g==='fixed') s.fixed += x.a; else s.live += x.a; }
@@ -1107,7 +1111,7 @@ function periodBudget(days, k){
   if (!k) return wb;
   const tot = days.reduce((a,d)=>a+dayBudget(d),0); return tot ? wb*auto/tot : 0;
 }
-const liveSpent = (list, k) => list.filter(x=>x.t==='e' && (k ? x.c===k : LIVE.includes(x.c))).reduce((a,x)=>a+x.a,0);
+const liveSpent = (list, k) => list.filter(x=>x.t==='e' && counted(x) && (k ? x.c===k : LIVE.includes(x.c))).reduce((a,x)=>a+x.a,0);
 function weekStartOf(d){ const ws = +S.settings.weekStart||0; const x = new Date(d); const diff = (x.getDay()-ws+7)%7; return addDays(x,-diff); }
 
 /* ============ 화면 상태 ============ */
@@ -1179,6 +1183,7 @@ function viewHome(){
         <div class="kpi"><span>저축</span><b class="num sav">${man(s.saving)}</b></div>
         <div class="kpi"><span>남은 돈</span><b class="num">${s.inc? man(s.left) : '—'}</b></div>
       </div>
+      ${s.pointN ? `<div class="ptline">🅿 이번 달 포인트 결제 ${s.pointN}건 · ${won(s.point)}P <span class="faint">(기록용 · 합계에 넣지 않음)</span></div>` : ''}
     </section>
     <section class="panel">
       <h2>분류별 예산<button class="linkbtn aside" data-nav="settings" data-focus="budget">예산 바꾸기</button></h2>
@@ -1216,6 +1221,7 @@ function fixedStatus(ym){
 }
 function rowHtml(x){
   const c = CAT[x.c] || {i:'•',n:x.c};
+  if (isPoint(x)) return `<li class="row ptrow" data-edit="${x.id}" data-ym="${ymOf(x.d)}" tabindex="0"><span class="ic" aria-hidden="true">${c.i}</span><span class="mm"><b>${esc(x.m||c.n)}</b><span>${esc(c.n)} · <span class="tag pt">🅿 포인트 · 계산 제외</span>${whoTag(x)}</span></span><span class="am num ptam">${won(Math.abs(x.a))}P</span></li>`;
   const sign = x.t==='i' ? '+' : x.t==='x' ? '' : '−';
   const cls = x.t==='i' ? 'inc' : x.t==='x' ? 'muted' : (CAT[x.c]||{}).g==='saving' ? 'sav' : 'exp';
   const amt = x.a<0 && x.t==='e' ? `+${won(-x.a)}` : `${sign}${won(Math.abs(x.a))}`;
@@ -1229,9 +1235,9 @@ function viewDash(){
   const byDate = (a,b)=> a.d.localeCompare(b.d) || (a.ts||0)-(b.ts||0);
   // 생활비 장부 칸
   const colOf = k => {
-    const its = list.filter(x=>x.t==='e' && x.c===k).sort(byDate); const v = its.reduce((a,x)=>a+x.a,0); const b = mb(k);
+    const its = list.filter(x=>x.t==='e' && x.c===k).sort(byDate); const v = its.filter(counted).reduce((a,x)=>a+x.a,0); const b = mb(k);
     let last = ''; const rows = its.map(x=>{ const day = +x.d.slice(8); const showD = x.d!==last; last = x.d;
-      return `<tr data-edit="${x.id}" data-ym="${ym}" ${x.ip?`title="등록 ${esc(ipName(x.ip))}${x.eip&&x.eip!==x.ip?` · 수정 ${esc(ipName(x.eip))}`:''}"`:''}><td class="dd">${showD?day:''}</td><td class="mm">${esc(x.m||'')}</td><td class="num ${x.a<0?'inc':''}">${won(x.a)}</td></tr>`; }).join('');
+      return `<tr data-edit="${x.id}" data-ym="${ym}" ${isPoint(x)?'class="ptrow"':''} ${x.ip?`title="등록 ${esc(ipName(x.ip))}${x.eip&&x.eip!==x.ip?` · 수정 ${esc(ipName(x.eip))}`:''}"`:''}><td class="dd">${showD?day:''}</td><td class="mm">${esc(x.m||'')}</td><td class="num ${x.a<0?'inc':''}">${won(x.a)}</td></tr>`; }).join('');
     return `<section class="dcol"><header><b>${CAT[k].i} ${esc(CAT[k].n)}</b><span class="num faint">${its.length}건</span></header>
       <div class="dcol-body">${rows?`<table><tbody>${rows}</tbody></table>`:'<p class="faint" style="margin:8px 0;font-size:13px">내역 없음</p>'}</div>
       <footer class="num"><div><span>소계</span><b>${won(v)}</b></div><div><span>예산</span><span>${won(b)}</span></div><div><span>${b-v<0?'초과':'잔액'}</span><b class="${b-v<0?'exp':'inc'}">${won(Math.abs(b-v))}</b></div></footer></section>`;
@@ -1246,7 +1252,7 @@ function viewDash(){
   const fxCats = CATS.e.filter(c=>c.g!=='live'); const tpl = S.settings.fixed||[];
   let fxRows = '', fxPlan = 0, fxAct = 0;
   fxCats.forEach(c=>{
-    const its = list.filter(x=>x.t==='e' && x.c===c.k); const tps = tpl.filter(t=>t.c===c.k);
+    const its = list.filter(x=>x.t==='e' && x.c===c.k && counted(x)); const tps = tpl.filter(t=>t.c===c.k);
     const used = new Set(); const lines = [];
     tps.forEach(t=>{ const hit = its.find(x=>x.m===t.name && !used.has(x.id)); if (hit) used.add(hit.id); lines.push({n:t.name, p:+t.a||0, a:hit?hit.a:null, id:hit&&hit.id}); });
     its.filter(x=>!used.has(x.id)).forEach(x=>lines.push({n:x.m||c.n, p:null, a:x.a, id:x.id}));
@@ -1260,7 +1266,7 @@ function viewDash(){
   // 주차별
   const weeks=[]; let cur=null;
   for (let d=1; d<=dim; d++){ const k=`${ym}-${pad(d)}`; const w0 = iso(weekStartOf(parse(k))); if (!cur || cur.ws!==w0){ cur={ws:w0, days:[]}; weeks.push(cur);} cur.days.push(k); }
-  weeks.forEach(w=>{ const set=new Set(w.days); w.b = Math.round(w.days.reduce((a,d)=>a+dayBudget(d),0)); w.v = list.filter(x=>set.has(x.d)&&x.t==='e'&&LIVE.includes(x.c)).reduce((a,x)=>a+x.a,0); });
+  weeks.forEach(w=>{ const set=new Set(w.days); w.b = Math.round(w.days.reduce((a,d)=>a+dayBudget(d),0)); w.v = list.filter(x=>set.has(x.d)&&x.t==='e'&&LIVE.includes(x.c)&&counted(x)).reduce((a,x)=>a+x.a,0); });
   const transfers = list.filter(x=>x.t==='x').sort(byDate);
   return `
   <div class="dash-top">
@@ -1307,6 +1313,7 @@ function applyFilters(list){
   if (f==='e') list = list.filter(x=>x.t==='e'); if (f==='i') list = list.filter(x=>x.t==='i');
   if (f==='live') list = list.filter(x=>x.t==='e' && LIVE.includes(x.c)); if (f==='fixed') list = list.filter(x=>x.f);
   if (f==='x') list = list.filter(x=>x.t==='x');
+  if (f==='point') list = list.filter(isPoint);
   if (q) list = list.filter(x => (x.m||'').includes(q) || (CAT[x.c]||{n:''}).n.includes(q));
   return list;
 }
@@ -1330,7 +1337,7 @@ function selBar(list){
     </div>`;
 }
 const fid = (x, f) => `${x.id}|${f}`;
-function amtIn(x){ return `<input class="amt-in num ${x.t==='i'?'inc':x.t==='x'?'':'exp'}" inputmode="numeric" data-fid="${fid(x,'a')}" value="${(x.a<0?'-':'')+won(Math.abs(x.a))}" aria-label="금액" ${S.readOnly?'disabled':''}>`; }
+function amtIn(x){ return `<input class="amt-in num ${isPoint(x)?'ptam':x.t==='i'?'inc':x.t==='x'?'':'exp'}" inputmode="numeric" data-fid="${fid(x,'a')}" value="${(x.a<0?'-':'')+won(Math.abs(x.a))}" aria-label="금액" ${S.readOnly?'disabled':''}>`; }
 function memoIn(x){ return `<input class="memo-in" data-fid="${fid(x,'m')}" value="${esc(x.m)}" placeholder="${esc((CAT[x.c]||{n:''}).n)}" aria-label="내용" ${S.readOnly?'disabled':''}>`; }
 function catSel(x){ return `<select class="cat-in" data-fid="${fid(x,'c')}" aria-label="분류" ${S.readOnly?'disabled':''}>${CATS[x.t].map(c=>`<option value="${c.k}" ${c.k===x.c?'selected':''}>${c.i} ${esc(c.n)}</option>`).join('')}${CAT[x.c]?'':`<option value="${x.c}" selected>(삭제된 분류)</option>`}</select>`; }
 function rowEditHtml(x){
@@ -1355,7 +1362,7 @@ async function inlineSave(el){
   if (ok) toast(f==='a' ? `금액을 ${wonU(Math.abs(nx.a))}으로 고쳤어요.` : f==='d' ? '날짜를 고쳤어요.' : '고쳤어요.');
 }
 function listToolbar(){
-  const filters = [['all','전체'],['e','지출'],['i','수입'],['live','생활비'],['fixed','고정'],['x','이체']];
+  const filters = [['all','전체'],['e','지출'],['i','수입'],['live','생활비'],['fixed','고정'],['x','이체'],['point','🅿 포인트']];
   return `<div class="toolbar">
     <div class="seg" role="group" aria-label="보기 방식">${[['list','목록'],['cal','달력'],['sheet','시트']].map(([k,n])=>`<button data-act="listMode" data-v="${k}" aria-pressed="${V.listMode===k}">${n}</button>`).join('')}</div>
     <input class="search" type="search" placeholder="내용·분류 검색" value="${esc(V.q)}" data-input="q" aria-label="검색">
@@ -1383,7 +1390,7 @@ function viewSheet(){
 }
 function updateSelUI(){
   const info = document.getElementById('selInfo'); if (!info) return;
-  const list = selectableItems(); const sel = list.filter(x=>V.sel.has(x.id)); const sum = sel.reduce((a,x)=>a+(x.t==='i'?0:x.a),0);
+  const list = selectableItems(); const sel = list.filter(x=>V.sel.has(x.id)); const sum = sel.reduce((a,x)=>a+(x.t==='i'||isPoint(x)?0:x.a),0);
   info.textContent = sel.length ? `${sel.length}건 선택 · ${won(sum)}원` : '선택한 항목 없음';
   const b = document.getElementById('delSelBtn'); if (b){ b.disabled = !sel.length || S.readOnly; b.textContent = sel.length ? `선택 항목 지우기 (${sel.length})` : '선택 항목 지우기'; }
   const all = document.getElementById('selAll'); if (all){ all.checked = list.length>0 && sel.length===list.length; all.indeterminate = sel.length>0 && sel.length<list.length; }
@@ -1426,7 +1433,7 @@ function calendarHtml(){
   const [y,m] = V.ym.split('-').map(Number); const first = new Date(y,m-1,1);
   const ws = +S.settings.weekStart||0; const start = weekStartOf(first);
   const list = itemsOf(V.ym); const byDay = {};
-  list.forEach(x => { const o = byDay[x.d] = byDay[x.d]||{e:0,i:0}; if (x.t==='i') o.i+=x.a; else if (x.t==='e') o.e+=x.a; });
+  list.forEach(x => { if (!counted(x)) return; const o = byDay[x.d] = byDay[x.d]||{e:0,i:0}; if (x.t==='i') o.i+=x.a; else if (x.t==='e') o.e+=x.a; });
   let cells = ''; const td = today();
   for (let i=0;i<42;i++){
     const d = addDays(start,i); const k = iso(d); const inM = d.getMonth()===m-1;
@@ -1461,12 +1468,12 @@ function repWeek(){
   const autoAll = days.reduce((a,d)=>a+dayBudget(d),0); const pace = autoAll ? Math.round(B * days.slice(0,elapsed).reduce((a,d)=>a+dayBudget(d),0) / autoAll) : 0;
   const label = `${ws.getMonth()+1}/${ws.getDate()} – ${we.getMonth()+1}/${we.getDate()}`;
   const catRows = LIVE.map(k=>({k, b:Math.round(periodBudget(days,k)), v:s.byCat[k]||0})).filter(r=>r.b||r.v);
-  const top = list.filter(x=>x.t==='e'&&LIVE.includes(x.c)).sort((a,b)=>b.a-a.a).slice(0,5);
+  const top = list.filter(x=>x.t==='e'&&LIVE.includes(x.c)&&counted(x)).sort((a,b)=>b.a-a.a).slice(0,5);
   // 이 주가 속한 달의 주차별 초과 관리
   const mk = ymOf(days[3]); const dim = daysIn(mk); const weeks=[]; let cur=null;
   for (let d=1; d<=dim; d++){ const k=`${mk}-${pad(d)}`; const w0 = iso(weekStartOf(parse(k))); if (!cur || cur.ws!==w0){ cur={ws:w0, days:[]}; weeks.push(cur);} cur.days.push(k); }
   const mItems = itemsOf(mk); let acc = 0;
-  weeks.forEach(w=>{ w.b = Math.round(w.days.reduce((a,d)=>a+dayBudget(d),0)); const set = new Set(w.days); w.v = mItems.filter(x=>set.has(x.d) && x.t==='e' && LIVE.includes(x.c)).reduce((a,x)=>a+x.a,0); w.future = w.days[0] > td; w.diff = w.b - w.v; if (!w.future){ acc += w.diff; } w.acc = acc; });
+  weeks.forEach(w=>{ w.b = Math.round(w.days.reduce((a,d)=>a+dayBudget(d),0)); const set = new Set(w.days); w.v = mItems.filter(x=>set.has(x.d) && x.t==='e' && LIVE.includes(x.c) && counted(x)).reduce((a,x)=>a+x.a,0); w.future = w.days[0] > td; w.diff = w.b - w.v; if (!w.future){ acc += w.diff; } w.acc = acc; });
   const pct = B ? Math.min(U/B*100, 100) : 0;
   return `
   <div class="toolbar"><div class="monthnav" style="margin-left:0"><button data-act="week" data-v="-7" aria-label="이전 주">‹</button><b class="num" style="min-width:120px">${label}</b><button data-act="week" data-v="7" aria-label="다음 주">›</button></div><button class="btn small" data-act="week" data-v="0">이번 주</button></div>
@@ -1501,11 +1508,11 @@ function repMonth(){
   const list = itemsOf(V.ym), s = summarize(list), sp = summarize(itemsOf(shiftYm(V.ym,-1)));
   const expCats = CATS.e.map(c=>({k:c.k, v:s.byCat[c.k]||0})).filter(r=>r.v>0).sort((a,b)=>b.v-a.v);
   const totalE = expCats.reduce((a,r)=>a+r.v,0);
-  const top = list.filter(x=>x.t==='e').sort((a,b)=>b.a-a.a).slice(0,5);
+  const top = list.filter(x=>x.t==='e'&&counted(x)).sort((a,b)=>b.a-a.a).slice(0,5);
   // 주차별
   const dim = daysIn(V.ym); const weeks=[]; let cur=null;
   for (let d=1; d<=dim; d++){ const dt = parse(`${V.ym}-${pad(d)}`); const ws = iso(weekStartOf(dt)); if (!cur || cur.ws!==ws){ cur={ws, from:d, to:d, v:0}; weeks.push(cur);} cur.to=d; }
-  list.forEach(x=>{ if (x.t==='e' && LIVE.includes(x.c)){ const d=+x.d.slice(8); const w=weeks.find(w=>d>=w.from&&d<=w.to); if (w) w.v+=x.a; } });
+  list.forEach(x=>{ if (x.t==='e' && LIVE.includes(x.c) && counted(x)){ const d=+x.d.slice(8); const w=weeks.find(w=>d>=w.from&&d<=w.to); if (w) w.v+=x.a; } });
   return `
   <div class="stat-row">
     <div class="stat"><span>수입</span><b class="num inc">${wonU(s.inc)}</b>${delta(s.inc, sp.inc, '전월', true)}</div>
@@ -1846,7 +1853,7 @@ function afterRender(){
   const el = id => document.getElementById(id);
   if (el('cWeek')){
     const ws = weekStartOf(parse(V.weekAnchor)); const days = Array.from({length:7},(_,i)=>addDays(ws,i));
-    const vals = days.map(d=>{ const k=iso(d); return itemsOf(ymOf(k)).filter(x=>x.d===k && x.t==='e' && LIVE.includes(x.c)).reduce((a,x)=>a+x.a,0); });
+    const vals = days.map(d=>{ const k=iso(d); return itemsOf(ymOf(k)).filter(x=>x.d===k && x.t==='e' && LIVE.includes(x.c) && counted(x)).reduce((a,x)=>a+x.a,0); });
     const daily = S.settings.weeklyBudget ? days.map(()=>Math.round(S.settings.weeklyBudget/7)) : days.map(d=>Math.round(dayBudget(iso(d))));
     charts.w = new Chart(el('cWeek'), {data:{labels:days.map(d=>`${WD[d.getDay()]} ${d.getDate()}`), datasets:[
       {type:'bar',label:'생활비',data:vals,backgroundColor:vals.map((v,i)=>v>daily[i]?exp:brand),borderRadius:4},
@@ -1859,7 +1866,7 @@ function afterRender(){
       options:{maintainAspectRatio:false, cutout:'62%', plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:12}}}, tooltip:{callbacks:{label:c=>`${c.label}: ${won(c.parsed)}원`}}}}});
   }
   if (el('cPace')){
-    const dim = daysIn(V.ym); const list = itemsOf(V.ym).filter(x=>x.t==='e'&&LIVE.includes(x.c));
+    const dim = daysIn(V.ym); const list = itemsOf(V.ym).filter(x=>x.t==='e'&&LIVE.includes(x.c)&&counted(x));
     const isCur = V.ym===today().slice(0,7); const lastDay = isCur ? new Date().getDate() : (V.ym>today().slice(0,7)?0:dim);
     const daily = Array(dim).fill(0); list.forEach(x=>daily[+x.d.slice(8)-1]+=x.a);
     let acc=0; const cum = daily.map((v,i)=>{ acc+=v; return i<lastDay?acc:null; });
@@ -1957,11 +1964,12 @@ function drawSheet(){
   <div class="field"><label for="fMemo">내용</label><input id="fMemo" type="text" autocomplete="off" placeholder="예: 우유, 달걀외" value="${esc(F.m)}"></div>
   ${sug.length?`<div class="sugg" aria-label="자주 쓴 내용">${sug.map(([m,o])=>`<button data-act="fSug" data-m="${esc(m)}" data-a="${o.a}">${esc(m)} <span class="faint num">${man(o.a)}</span></button>`).join('')}</div>`:''}
   <div class="field"><label for="fDate">날짜</label><div class="datewrap"><input id="fDate" type="date" value="${F.d}"><span class="muted" style="width:20px">${WD[dd.getDay()]}</span><button class="chip" data-act="fDay" data-v="0" aria-pressed="${F.d===today()}">오늘</button><button class="chip" data-act="fDay" data-v="-1" aria-pressed="${F.d===iso(addDays(new Date(),-1))}">어제</button></div></div>
-  <div class="field"><label>결제</label><div class="chips">${Object.entries(PAY).map(([k,n])=>`<button class="chip" data-act="fPay" data-v="${k}" aria-pressed="${F.p===k}">${n}</button>`).join('')}
+  <div class="field"><label>결제</label><div class="chips">${Object.entries(PAY).filter(([k])=>k!=='point' || F.t==='e').map(([k,n])=>`<button class="chip ${k==='point'?'chip-pt':''}" data-act="fPay" data-v="${k}" aria-pressed="${F.p===k}">${k==='point'?'🅿 ':''}${n}</button>`).join('')}
     ${F.t==='e'?`<label class="check" style="margin-left:auto"><input type="checkbox" id="fFix" ${F.f?'checked':''}> 고정지출</label>`:''}</div></div>
   ${F.p==='card' && F.t==='e' ? `<div class="field"><label>카드</label><div class="chips">${cardsList().map(c=>`<button class="chip" data-act="fCard" data-v="${c.id}" aria-pressed="${F.card===c.id}">💳 ${esc(c.name)}</button>`).join('')}${F.card && !cardById(F.card)?`<button class="chip" aria-pressed="true" disabled>삭제된 카드</button>`:''}<button class="chip chip-add" data-act="fCardAdd">＋ 카드 등록</button></div></div>
   ${cardsList().length?'':`<p class="note" style="margin:-4px 0 8px 60px">카드를 등록하면 카드별 사용액을 따로 모아 볼 수 있어요.</p>`}`:''}
   ${F.editing && (F.ip||F.eip) ? `<p class="note" style="margin:4px 0 0">👤 등록 <b>${esc(ipName(F.ip)||'알 수 없음')}</b>${F.ip&&ipName(F.ip)!==F.ip?` (${esc(F.ip)})`:''}${F.ts?` · ${fmtTs(F.ts)}`:''}${F.eip?` · 마지막 수정 <b>${esc(ipName(F.eip))}</b>${F.ets?` ${fmtTs(F.ets)}`:''}`:''}</p>` : ''}
+  ${F.p==='point' && F.t==='e' ? '<p class="note ptnote">🅿 포인트로 결제한 내역은 <b>기록만</b> 남기고, 지출·예산·결산·그래프 같은 <b>어떤 금액 계산에도 넣지 않아요.</b></p>' : ''}
   <div class="sheet-f">
     ${F.editing?`<button class="btn danger" data-act="fDel" style="flex:0 0 auto">삭제</button>`:`<button class="btn" data-act="fSave" data-more="1">저장하고 계속</button>`}
     <button class="btn primary" data-act="fSave">저장</button>
