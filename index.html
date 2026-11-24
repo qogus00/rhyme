@@ -2,7 +2,7 @@
 <html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rhyme v0.16.0</title>
+<title>Rhyme v0.18.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -535,13 +535,26 @@ table.t.cardtbl td:nth-child(2),table.t.cardtbl th:nth-child(2),table.t.cardtbl 
 .dcol tr.ptrow td{color:var(--ink-3)}
 .dcol tr.ptrow td.num::after{content:'P'}
 .ptline{font-size:12px;color:var(--ink-2);margin-top:6px}
+.acwrap{position:relative;min-width:0}
+.acwrap input{width:100%}
+.ac-list{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;background:var(--surface);border:1px solid var(--rule-strong);border-radius:10px;box-shadow:0 10px 24px rgba(20,90,45,.18);max-height:280px;overflow:auto;padding:4px}
+.ac-list[hidden]{display:none}
+.ac-item{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer}
+.ac-item:hover,.ac-item.on{background:var(--brand-soft)}
+.ac-ic{text-align:center}
+.ac-m{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ac-m mark{background:none;color:var(--brand-text);font-weight:700}
+.ac-meta{font-size:12px;color:var(--ink-2);white-space:nowrap}
+.acwrap input#fMemo{padding-right:44px}
+.kobtn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:28px;border-radius:8px;border:1px solid var(--rule-strong);background:var(--surface-2);font-weight:700;font-size:13px;color:var(--ink-2)}
+.kobtn[aria-pressed="true"]{background:var(--brand-soft);border-color:var(--brand-text);color:var(--brand-text)}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
     <div class="brandbox">
-      <div class="brand">Rhyme<span class="ver" title="버전 (major.minor.patch)">v0.16.0</span></div>
+      <div class="brand">Rhyme<span class="ver" title="버전 (major.minor.patch)">v0.18.0</span></div>
       <div class="themesw" role="group" aria-label="화면 테마"><button data-act="theme" data-v="auto" aria-pressed="true">자동</button><button data-act="theme" data-v="light" aria-pressed="false">밝게</button><button data-act="theme" data-v="dark" aria-pressed="false">어둡게</button></div>
     </div>
     <nav class="tabs" aria-label="화면"><button data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg><span>홈</span></button><button data-nav="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="8" height="10" rx="1"></rect><rect x="13" y="3" width="8" height="6" rx="1"></rect><rect x="13" y="11" width="8" height="10" rx="1"></rect><rect x="3" y="15" width="8" height="6" rx="1"></rect></svg><span>대시보드</span></button><button data-nav="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg><span>내역</span></button><button data-nav="report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span>결산</span></button><button data-nav="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg><span>설정</span></button></nav>
@@ -572,7 +585,7 @@ table.t.cardtbl td:nth-child(2),table.t.cardtbl th:nth-child(2),table.t.cardtbl 
 /* 저장용 원본: 화면이 그려지기 전의 문서를 그대로 보관 */
 const PRISTINE = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
 /* 버전 표기: major.minor.patch (큰 구조 변경 . 기능 추가 . 작은 수정) */
-const APP_VERSION = '0.16.0';
+const APP_VERSION = '0.18.0';
 /* ============ 분류 정의 ============ */
 const CATS = {
   e: [
@@ -1077,6 +1090,92 @@ function ghBoxHtml(){
   </div>`;
 }
 
+
+/* ============ 한글 입력 도우미 ============
+   웹페이지는 컴퓨터의 한/영 상태를 바꿀 수 없어서,
+   한글 칸(data-ko)에서 영문 자판으로 친 글자를 두벌식 한글로 바로 바꿔 넣음.
+   이미 한글 모드로 치면(입력기 조합) 그대로 둠. 칸 오른쪽 [가/A]로 끄고 켬. */
+const KO_OFF_KEY = 'rhyme-ko-off';
+const koOn = () => localStorageGet(KO_OFF_KEY) !== '1';
+const HG = (() => {
+  const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+  const JUNG = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ';
+  const JONG = ' ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ';
+  const KEY = {q:'ㅂ',w:'ㅈ',e:'ㄷ',r:'ㄱ',t:'ㅅ',y:'ㅛ',u:'ㅕ',i:'ㅑ',o:'ㅐ',p:'ㅔ',a:'ㅁ',s:'ㄴ',d:'ㅇ',f:'ㄹ',g:'ㅎ',h:'ㅗ',j:'ㅓ',k:'ㅏ',l:'ㅣ',
+               z:'ㅋ',x:'ㅌ',c:'ㅊ',v:'ㅍ',b:'ㅠ',n:'ㅜ',m:'ㅡ',Q:'ㅃ',W:'ㅉ',E:'ㄸ',R:'ㄲ',T:'ㅆ',O:'ㅒ',P:'ㅖ'};
+  const V2 = {'ㅗㅏ':'ㅘ','ㅗㅐ':'ㅙ','ㅗㅣ':'ㅚ','ㅜㅓ':'ㅝ','ㅜㅔ':'ㅞ','ㅜㅣ':'ㅟ','ㅡㅣ':'ㅢ'};
+  const J2 = {'ㄱㅅ':'ㄳ','ㄴㅈ':'ㄵ','ㄴㅎ':'ㄶ','ㄹㄱ':'ㄺ','ㄹㅁ':'ㄻ','ㄹㅂ':'ㄼ','ㄹㅅ':'ㄽ','ㄹㅌ':'ㄾ','ㄹㅍ':'ㄿ','ㄹㅎ':'ㅀ','ㅂㅅ':'ㅄ'};
+  const split2 = (map, ch) => { for (const [k,v] of Object.entries(map)) if (v===ch) return [k[0],k[1]]; return null; };
+  const isV = j => JUNG.includes(j);
+  const syl = (c, v, j='') => String.fromCharCode(0xAC00 + (CHO.indexOf(c)*21 + JUNG.indexOf(v))*28 + (j ? JONG.indexOf(j) : 0));
+  const parts = ch => { const n = ch.charCodeAt(0) - 0xAC00; if (n < 0 || n > 11171) return null;
+    return { c:CHO[Math.floor(n/588)], v:JUNG[Math.floor((n%588)/28)], j:(JONG[n%28]||'').trim() }; };
+  /* 앞 글자(prev)에 자모 하나를 더한 결과 문자열 */
+  function add(prev, k){
+    const p = prev ? parts(prev) : null;
+    if (!isV(k)){                              // 자음
+      if (p && !p.j && JONG.includes(k) && k!==' ' ) return syl(p.c, p.v, k);
+      if (p && p.j && J2[p.j+k]) return syl(p.c, p.v, J2[p.j+k]);
+      return (prev||'') + k;
+    }
+    if (p && p.j){                             // 받침이 다음 글자로 넘어감
+      const sp = split2(J2, p.j);
+      if (sp) return syl(p.c, p.v, sp[0]) + syl(sp[1], k);
+      if (CHO.includes(p.j)) return syl(p.c, p.v) + syl(p.j, k);
+      return prev + k;
+    }
+    if (p && !p.j && V2[p.v+k]) return syl(p.c, V2[p.v+k]);
+    if (prev && CHO.includes(prev)) return syl(prev, k);
+    if (prev && isV(prev) && V2[prev+k]) return V2[prev+k];
+    return (prev||'') + k;
+  }
+  /* 조합 중인 마지막 글자에서 자모 하나 빼기 */
+  function back(prev){
+    const p = parts(prev);
+    if (p){
+      if (p.j){ const sp = split2(J2, p.j); return syl(p.c, p.v, sp ? sp[0] : ''); }
+      const sv = split2(V2, p.v); if (sv) return syl(p.c, sv[0]);
+      return p.c;
+    }
+    const sv = split2(V2, prev); if (sv) return sv[0];
+    return '';
+  }
+  return { KEY, add, back, isHangul: ch => !!ch && (/[ㄱ-ㅣ가-힣]/).test(ch) };
+})();
+let koComp = null;   // {el, pos}: 바로 앞 글자를 아직 조합 중
+document.addEventListener('beforeinput', e => {
+  const el = e.target;
+  if (!el || !el.matches || !el.matches('input[data-ko]') || !koOn()) return;
+  if (e.isComposing || e.inputType === 'insertCompositionText') { koComp = null; return; }    // 이미 한글 입력기로 치는 중
+  const st = el.selectionStart, en = el.selectionEnd, val = el.value;
+  if (e.inputType === 'insertText' && e.data && e.data.length === 1 && HG.KEY[e.data] !== undefined || (e.inputType === 'insertText' && /^[A-Z]$/.test(e.data||'') )){
+    const k = HG.KEY[e.data] || HG.KEY[(e.data||'').toLowerCase()];
+    if (!k) return;
+    e.preventDefault();
+    let head = val.slice(0, st), tail = val.slice(en);
+    const composing = koComp && koComp.el === el && koComp.pos === st && st === en && HG.isHangul(head.slice(-1));
+    const prev = composing ? head.slice(-1) : '';
+    const out = HG.add(prev, k);
+    head = (composing ? head.slice(0, -1) : head) + out;
+    el.value = head + tail; el.setSelectionRange(head.length, head.length);
+    koComp = { el, pos: head.length };
+    el.dispatchEvent(new Event('input', { bubbles:true }));
+    return;
+  }
+  if (e.inputType === 'deleteContentBackward' && koComp && koComp.el === el && koComp.pos === st && st === en && st > 0){
+    e.preventDefault();
+    const head = val.slice(0, st), rest = HG.back(head.slice(-1));
+    const nh = head.slice(0, -1) + rest;
+    el.value = nh + val.slice(en); el.setSelectionRange(nh.length, nh.length);
+    koComp = rest ? { el, pos: nh.length } : null;
+    el.dispatchEvent(new Event('input', { bubbles:true }));
+    return;
+  }
+  koComp = null;      // 띄어쓰기·숫자 등: 조합 끝
+}, true);
+['pointerdown','focusin'].forEach(t => document.addEventListener(t, () => { koComp = null; }, true));
+document.addEventListener('keydown', e => { if (/^(Arrow|Home|End|Tab|Escape)/.test(e.key)) koComp = null; }, true);
+
 /* ============ 집계 ============ */
 const itemsOf = ym => (S.months[ym]||[]);
 const yearItems = y => Object.keys(S.months).filter(k=>k.startsWith(y+'-')).flatMap(k=>S.months[k]);
@@ -1338,7 +1437,7 @@ function selBar(list){
 }
 const fid = (x, f) => `${x.id}|${f}`;
 function amtIn(x){ return `<input class="amt-in num ${isPoint(x)?'ptam':x.t==='i'?'inc':x.t==='x'?'':'exp'}" inputmode="numeric" data-fid="${fid(x,'a')}" value="${(x.a<0?'-':'')+won(Math.abs(x.a))}" aria-label="금액" ${S.readOnly?'disabled':''}>`; }
-function memoIn(x){ return `<input class="memo-in" data-fid="${fid(x,'m')}" value="${esc(x.m)}" placeholder="${esc((CAT[x.c]||{n:''}).n)}" aria-label="내용" ${S.readOnly?'disabled':''}>`; }
+function memoIn(x){ return `<input class="memo-in" data-ko lang="ko" data-fid="${fid(x,'m')}" value="${esc(x.m)}" placeholder="${esc((CAT[x.c]||{n:''}).n)}" aria-label="내용" ${S.readOnly?'disabled':''}>`; }
 function catSel(x){ return `<select class="cat-in" data-fid="${fid(x,'c')}" aria-label="분류" ${S.readOnly?'disabled':''}>${CATS[x.t].map(c=>`<option value="${c.k}" ${c.k===x.c?'selected':''}>${c.i} ${esc(c.n)}</option>`).join('')}${CAT[x.c]?'':`<option value="${x.c}" selected>(삭제된 분류)</option>`}</select>`; }
 function rowEditHtml(x){
   const c = CAT[x.c] || {i:'•',n:x.c}; const on = V.sel.has(x.id);
@@ -1656,7 +1755,7 @@ function cardPanel(){
       <td class="num"><button class="linkbtn num" data-act="payGo" data-v="card:${c.id}" title="이 카드 내역 보기">${won(o.v)}원</button> <span class="faint">${o.n}건</span></td>
       <td><button class="iconbtn" data-act="cardDel" data-v="${c.id}" aria-label="${esc(c.name)} 지우기" ${dis}>🗑</button></td></tr>`; }).join('')}</tbody></table></div>`
       : '<p class="note" style="margin-top:0">아직 등록한 카드가 없어요. 아래에서 추가하면 지출을 입력할 때 카드를 고를 수 있어요.</p>'}
-    <div class="addcat addcard" role="group" aria-label="카드 추가"><span style="font-size:20px">💳</span><input id="newCardName" maxlength="16" placeholder="카드 이름 (예: 현대카드)" aria-label="카드 이름" ${dis}><input id="newCardLast4" class="num" inputmode="numeric" maxlength="4" placeholder="끝 4자리 (선택)" aria-label="끝 4자리" ${dis}><button class="btn primary small" data-act="cardAdd" ${dis}>＋ 카드 추가</button></div>
+    <div class="addcat addcard" role="group" aria-label="카드 추가"><span style="font-size:20px">💳</span><input id="newCardName" data-ko lang="ko" maxlength="16" placeholder="카드 이름 (예: 현대카드)" aria-label="카드 이름" ${dis}><input id="newCardLast4" class="num" inputmode="numeric" maxlength="4" placeholder="끝 4자리 (선택)" aria-label="끝 4자리" ${dis}><button class="btn primary small" data-act="cardAdd" ${dis}>＋ 카드 추가</button></div>
     <p class="note">카드 이름과 끝 4자리는 칸에서 바로 고칠 수 있어요. 사용액을 누르면 그 카드 내역만 볼 수 있어요. 카드 번호 전체는 적지 마세요.</p>
   </section>`;
 }
@@ -1940,11 +2039,61 @@ function openSheet(item, presetDate){
   setTimeout(()=>{ const a=document.getElementById('fAmt'); if (a && !item) a.focus(); }, 50);
 }
 function closeSheet(){ document.getElementById('overlay').classList.remove('open'); F=null; }
+/* ── 내용 자동완성: 예전에 입력한 내용을 글자 몇 개로 찾아 줌 ── */
+const AC = { list:[], idx:-1, index:null };
+function memoIndex(){
+  const m = new Map();
+  for (const x of Object.values(S.months).flat()){
+    if (!x.m || x.t !== F.t) continue;
+    const k = x.m.trim(); if (!k) continue;
+    const o = m.get(k) || { m:k, n:0, d:'', ts:0 };
+    o.n++;
+    const t = Math.max(x.u||0, x.ts||0);
+    if (x.d > o.d || (x.d === o.d && t > o.ts)){ o.d = x.d; o.ts = t; o.a = x.a; o.c = x.c; o.p = x.p; o.card = x.card; }
+    m.set(k, o);
+  }
+  return [...m.values()];
+}
+function acSearch(q){
+  q = (q||'').trim().toLowerCase(); if (!q) return [];
+  const idx = AC.index || (AC.index = memoIndex());
+  const hit = [];
+  for (const o of idx){
+    const k = o.m.toLowerCase(); const pos = k.indexOf(q);
+    if (pos < 0 || k === q) continue;
+    hit.push({ ...o, rank: pos === 0 ? 0 : 1 });
+  }
+  hit.sort((a,b)=> a.rank-b.rank || b.d.localeCompare(a.d) || b.n-a.n);
+  return hit.slice(0, 8);
+}
+function acRender(){
+  const box = document.getElementById('acList'), inp = document.getElementById('fMemo'); if (!box || !inp) return;
+  if (!AC.list.length){ box.hidden = true; inp.setAttribute('aria-expanded','false'); return; }
+  const q = inp.value.trim();
+  const hl = t => { const i = t.toLowerCase().indexOf(q.toLowerCase()); return i < 0 ? esc(t) : esc(t.slice(0,i)) + '<mark>' + esc(t.slice(i, i+q.length)) + '</mark>' + esc(t.slice(i+q.length)); };
+  box.innerHTML = AC.list.map((o,i)=>{ const c = CAT[o.c] || {i:'•', n:''};
+    return `<div class="ac-item ${i===AC.idx?'on':''}" role="option" id="ac${i}" aria-selected="${i===AC.idx}" data-act="acPick" data-i="${i}">
+      <span class="ac-ic" aria-hidden="true">${c.i}</span><span class="ac-m">${hl(o.m)}</span>
+      <span class="ac-meta">${esc(c.n)} · ${+o.d.slice(5,7)}/${+o.d.slice(8)}${o.n>1?` · ${o.n}회`:''}</span></div>`; }).join('');
+  box.hidden = false; inp.setAttribute('aria-expanded','true');
+  inp.setAttribute('aria-activedescendant', AC.idx >= 0 ? 'ac'+AC.idx : '');
+}
+function acClose(){ AC.list = []; AC.idx = -1; acRender(); }
+function acPick(i){
+  const o = AC.list[i]; if (!o || !F) return;
+  syncForm();
+  F.m = o.m;                                                    // 내용
+  if (CATS[F.t].some(c=>c.k===o.c)) F.c = o.c;                  // 분류만 지난번과 같게 (금액·결제수단·카드는 그대로)
+  AC.list = []; AC.idx = -1;
+  drawSheet();
+  const amt = document.getElementById('fAmt'); if (amt){ amt.focus(); if (amt.value) amt.select(); }
+}
 function suggestions(){
   const freq = {}; Object.values(S.months).flat().forEach(x=>{ if (x.c===F.c && x.m){ const k=x.m.trim(); const o=freq[k]=freq[k]||{n:0,a:x.a,d:''}; o.n++; if (x.d>o.d){o.d=x.d;o.a=x.a;} } });
   return Object.entries(freq).sort((a,b)=>b[1].n-a[1].n || b[1].d.localeCompare(a[1].d)).slice(0,8);
 }
 function drawSheet(){
+  AC.index = null; AC.list = []; AC.idx = -1;
   const cats = CATS[F.t]; if (!cats.find(c=>c.k===F.c)) F.c = cats[0].k;
   const sug = suggestions(); const dd = parse(F.d);
   document.getElementById('sheet').innerHTML = `
@@ -1956,12 +2105,12 @@ function drawSheet(){
   <div class="cat-tools"><span class="faint">${F.iconMode?'아이콘을 바꿀 분류를 누르세요':'분류'}</span><button class="linkbtn" data-act="fIconMode" aria-pressed="${!!F.iconMode}">${F.iconMode?'✓ 아이콘 바꾸기 끝':'🎨 아이콘 바꾸기'}</button></div>
   <div class="catgrid ${F.iconMode?'iconmode':''}" role="group" aria-label="분류">${cats.map(c=>`<button class="cat" data-act="${F.iconMode?'fCatIcon':'fCat'}" data-v="${c.k}" aria-pressed="${!F.iconMode && F.c===c.k}" ${F.iconMode?`aria-label="${esc(c.n)} 아이콘 바꾸기"`:''}><i>${c.i}</i>${esc(c.n)}</button>`).join('')}${F.t==='e' && !F.iconMode ? `<button class="cat cat-add" data-act="fAddOpen" aria-expanded="${!!F.addOpen}"><i>＋</i>새 항목</button>`:''}</div>
   ${F.t==='e' && F.addOpen ? `<div class="sheet-add" role="group" aria-label="새 지출 항목 추가">
-    <div class="sa-row"><button class="emo-btn" data-act="iconPick" data-v="__sheet" aria-label="새 항목 아이콘 고르기" title="아이콘 고르기">${F.newIcon||'🏷️'}</button><input id="ncName" maxlength="12" placeholder="새 항목 이름 (예: 여행)" value="${esc(F.newName||'')}" aria-label="새 항목 이름"></div>
+    <div class="sa-row"><button class="emo-btn" data-act="iconPick" data-v="__sheet" aria-label="새 항목 아이콘 고르기" title="아이콘 고르기">${F.newIcon||'🏷️'}</button><input id="ncName" data-ko lang="ko" maxlength="12" placeholder="새 항목 이름 (예: 여행)" value="${esc(F.newName||'')}" aria-label="새 항목 이름"></div>
     <div class="sa-row"><select class="persel" id="ncSec" aria-label="영역"><option value="spend" ${F.newSec==='save'?'':'selected'}>예산 (소비성)</option><option value="save" ${F.newSec==='save'?'selected':''}>예산 (저축성)</option></select><input class="num" id="ncBud" inputmode="numeric" data-money placeholder="월 예산 (선택)" value="${F.newBud?won(F.newBud):''}" aria-label="월 예산"></div>
     <div class="sa-row"><button class="btn small" data-act="fAddCancel">취소</button><button class="btn primary small" data-act="fAddSave">＋ 추가하고 선택</button></div>
     <p class="note" style="margin:0">추가한 항목은 설정 › 생활비 예산에도 바로 생겨요.</p>
   </div>`:''}
-  <div class="field"><label for="fMemo">내용</label><input id="fMemo" type="text" autocomplete="off" placeholder="예: 우유, 달걀외" value="${esc(F.m)}"></div>
+  <div class="field"><label for="fMemo">내용</label><div class="acwrap"><input id="fMemo" data-ko type="text" autocomplete="off" lang="ko" placeholder="예: 우유, 달걀외 (한두 글자만 쳐도 예전 내용이 떠요)" value="${esc(F.m)}" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="acList"><button type="button" class="kobtn" data-act="koToggle" title="영문 자판으로 쳐도 한글로 입력 (눌러서 끄기/켜기)" aria-pressed="${koOn()}">${koOn()?'가':'A'}</button><div class="ac-list" id="acList" role="listbox" hidden></div></div></div>
   ${sug.length?`<div class="sugg" aria-label="자주 쓴 내용">${sug.map(([m,o])=>`<button data-act="fSug" data-m="${esc(m)}" data-a="${o.a}">${esc(m)} <span class="faint num">${man(o.a)}</span></button>`).join('')}</div>`:''}
   <div class="field"><label for="fDate">날짜</label><div class="datewrap"><input id="fDate" type="date" value="${F.d}"><span class="muted" style="width:20px">${WD[dd.getDay()]}</span><button class="chip" data-act="fDay" data-v="0" aria-pressed="${F.d===today()}">오늘</button><button class="chip" data-act="fDay" data-v="-1" aria-pressed="${F.d===iso(addDays(new Date(),-1))}">어제</button></div></div>
   <div class="field"><label>결제</label><div class="chips">${Object.entries(PAY).filter(([k])=>k!=='point' || F.t==='e').map(([k,n])=>`<button class="chip ${k==='point'?'chip-pt':''}" data-act="fPay" data-v="${k}" aria-pressed="${F.p===k}">${k==='point'?'🅿 ':''}${n}</button>`).join('')}
@@ -2112,6 +2261,7 @@ function toast(msg, action){
 function findItem(id, ym){ return (S.months[ym]||[]).find(x=>x.id===id) || Object.values(S.months).flat().find(x=>x.id===id); }
 
 document.addEventListener('click', async e => {
+  if (AC.list.length && !e.target.closest('.acwrap')) acClose();
   if (!e.target.closest('.mnwrap')) closePicker(false);
   const nav = e.target.closest('[data-nav]');
   if (nav){ V.view = nav.dataset.nav; render(); window.scrollTo(0,0); if (nav.dataset.focus){ const el=document.getElementById(nav.dataset.focus); if (el) el.scrollIntoView(); } return; }
@@ -2244,6 +2394,9 @@ document.addEventListener('click', async e => {
     case 'autoHangul': localStorageSet(HANGUL_OFF_KEY, v==='off' ? '1' : '0'); render(); toast(v==='off' ? '한글 자동 전환을 껐어요.' : '이제 글자 칸을 누르면 한글로 시작해요.'); break;
     case 'openData': { try { const r = await fetch('/api/open-data-folder', {method:'POST'}); const j = await r.json(); toast(`데이터 폴더: ${j.path}`); } catch(e){ toast('데이터 폴더를 열지 못했어요.'); } break; }
     case 'fDay': syncForm(); F.d = iso(addDays(new Date(), +v)); drawSheet(); break;
+    case 'acPick': acPick(+b.dataset.i); break;
+    case 'koToggle': { localStorageSet(KO_OFF_KEY, koOn() ? '1' : '0'); b.textContent = koOn() ? '가' : 'A'; b.setAttribute('aria-pressed', koOn());
+      toast(koOn() ? '가: 영문 자판으로 쳐도 한글로 들어가요.' : 'A: 친 그대로(영문) 들어가요.'); const m = document.getElementById('fMemo'); if (m) m.focus(); break; }
     case 'fSug': syncForm(); F.m = b.dataset.m; if (F.a==='' ) F.a = +b.dataset.a; drawSheet(); break;
     case 'qAdd': syncForm(); F.a = (+F.a||0) + (+v); drawSheet(); break;
     case 'qNeg': syncForm(); F.a = -(+F.a||0) || ''; drawSheet(); break;
@@ -2252,6 +2405,14 @@ document.addEventListener('click', async e => {
     case 'fDel': { const it = {...F, d:F.oldDate}; if (!confirm('이 내역을 지울까요?')) return; closeSheet(); if (await deleteItem(it)) toast('지웠어요.'); break; }
   }
 });
+document.addEventListener('keydown', e => {
+  if (e.target && e.target.id === 'fMemo' && AC.list.length){
+    if (e.key === 'ArrowDown'){ e.preventDefault(); e.stopImmediatePropagation(); AC.idx = (AC.idx + 1) % AC.list.length; acRender(); return; }
+    if (e.key === 'ArrowUp'){ e.preventDefault(); e.stopImmediatePropagation(); AC.idx = AC.idx <= 0 ? AC.list.length - 1 : AC.idx - 1; acRender(); return; }
+    if (e.key === 'Enter' && !e.isComposing && AC.idx >= 0){ e.preventDefault(); e.stopImmediatePropagation(); acPick(AC.idx); return; }
+    if (e.key === 'Escape'){ e.preventDefault(); e.stopImmediatePropagation(); acClose(); return; }
+  }
+}, true);
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey||e.metaKey) && (e.key==='s'||e.key==='S')){ e.preventDefault(); saveFile(); return; }
   if (e.key==='Escape' && document.getElementById('ghOverlay') && document.getElementById('ghOverlay').classList.contains('open')){ ghCloseSetup(); return; }
@@ -2272,6 +2433,7 @@ document.addEventListener('keydown', e => {
 document.getElementById('overlay').addEventListener('click', e => { if (e.target.id==='overlay') closeSheet(); });
 document.getElementById('iconOverlay').addEventListener('click', e => { if (e.target.id==='iconOverlay') closeIconPicker(); });
 document.addEventListener('input', e => {
+  if (e.target.id==='fMemo' && F){ AC.list = acSearch(e.target.value); AC.idx = -1; acRender(); }
   if (e.target.id==='fAmt'){ const el=e.target; const neg = el.value.trim().startsWith('-'); const n = el.value.replace(/[^0-9]/g,''); el.value = n ? (neg?'-':'') + Number(n).toLocaleString('ko-KR') : (neg?'-':''); }
   if (e.target.classList.contains('amt-in')){ const el=e.target; const neg = el.value.trim().startsWith('-'); const n = el.value.replace(/[^0-9]/g,''); el.value = n ? (neg?'-':'') + Number(n).toLocaleString('ko-KR') : (neg?'-':''); return; }
   if (e.target.matches('[data-budget],[data-money],.fxedit [data-k="a"]')){ const n=e.target.value.replace(/[^0-9]/g,''); e.target.value = n?Number(n).toLocaleString('ko-KR'):''; }
